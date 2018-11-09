@@ -109,7 +109,11 @@ nav h1 a {
   height: 100%;
   background-color: #3397DB;
   align-items: center;
-  padding: 10px 0;
+  padding: 10px 0px 10px 0px;
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 .filter-options h2 {
   color: white;
@@ -117,6 +121,9 @@ nav h1 a {
   font-weight: normal;
   line-height: 1;
   margin: 0 20px;
+  width: 100%;
+  letter-spacing: 2px;
+  text-align: center;
 }
 .filter-options select {
   background-color: white;
@@ -130,31 +137,34 @@ nav h1 a {
   width: 200px;
 }
 
-/* ====================== Restaurant Listing ====================== */
 #restaurants-list {
   background-color: #f3f3f3;
-  list-style: outside none none;
-  margin: 0;
+  margin: 15px 0 0 0;
   padding: 30px 15px 60px;
   text-align: center;
   display: flex;
-  flex-direction: column;
+  list-style-type: none;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;    
 }
+
 #restaurants-list li {
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
-  margin: 15px;
-  min-height: 380px;
-  padding: 0 30px 25px;
+  margin: 10px;
+  min-height: 450px;
+  padding: 25px 25px 25px;
   text-align: left;
   max-width: 470px;
-  width: 80%;
+  width: 230px;
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
   display: block;
+  align-content: center;
   margin: 0;
   max-width: 100%;
   min-height: 248px;
@@ -197,20 +207,22 @@ nav h1 a {
 .inside #map-container {
   background: blue none repeat scroll 0 0;
   height: 87%;
-  position: fixed;
   right: 0;
   top: 80px;
-  width: 50%;
+  z-index: 1;
 }
 .inside #map {
   background-color: #ccc;
-  height: 100%;
+  /*height: 100%;*/
   width: 100%;
 }
 .inside #footer {
   bottom: 0;
   position: absolute;
-  width: 50%;
+  width: 90%;
+}
+#restaurant-img {
+	width: 90%;
 }
 #restaurant-name {
   color: #f18200;
@@ -221,9 +233,6 @@ nav h1 a {
   margin: 15px 0 30px;
   text-transform: uppercase;
   line-height: 1.1;
-}
-#restaurant-img {
-	width: 90%;
 }
 #restaurant-address {
   font-size: 12pt;
@@ -242,20 +251,39 @@ nav h1 a {
 	width: 90%;
 }
 #restaurant-container, #reviews-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
   padding: 140px 40px 30px;
   width: 50%;
+  margin: auto;
 }
+#restaurant-container {
+  width: calc((100% - 80px) / 2);
+  height: 55%;
+  order: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #reviews-container {
-  padding: 30px 40px 80px;
+  order: 2;
+  padding: 10% 20% 80px 20%;
+  display: flex;
+  flex-direction: column;
+
 }
+
 #reviews-container h2 {
   color: #f58500;
+  align-items: center;
   font-size: 24pt;
   font-weight: 300;
   letter-spacing: -1px;
-  padding-bottom: 1pt;
+  padding:0;
 }
 #reviews-list {
   margin: 0;
@@ -270,166 +298,21 @@ nav h1 a {
   overflow: hidden;
   padding: 0 20px 20px;
   position: relative;
-  width: 85%;
+  max-width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 #reviews-list li p {
   margin: 0 0 10px;
+  text-align: justify;
 }
 #restaurant-hours td {
   color: #666;
-}
-
-.skip-link{
-  display: block;
-  position: absolute;
-  top: 15px;
-  left: -1000px;
-  background-color: white;
-  padding: 5px 10px;
-}
-
-.skip-link:focus{
-  left: 20px;
+  overflow-x: auto;
 }
 
 
 
-@media screen and (max-width:414px){
-  #restaurants-list li{
-    width:100%;
-  }
-  p{
-    display:none;
-  }
-  .filter-options h2{
-    display:none;
-  }
-  img.restaurant-img{
-    width:80%;
-    height: 80%;
-  }
-  #reviews-list li{
-    width: 50;
-  }
 
-}
-
-@media screen and (max-width:462px){
-
-  li p:last-of-type{
-    display: none;
-  }
-  #reviews-list li p:last-child{
-    display: none;
-  }
-  #reviews-list li {
-    width:150px;
-   }
-}
-
-@media screen and (min-width:360px) and (max-width:424px) {
-  #reviews-list li{
-    width:85px;
-    height:90px;
-    overflow-x: hidden; 
-  }
-  #reviews-list li p{
-    overflow: hidden;
-    width:70px;
-  }
-  #reviews-list li p:nth-child(2),p:last-child{
-    display: none;
-  }
-  #restaurant-container td:nth-child(even){
-    overflow-x: scroll;
-    width:70px;
-  }
-}
-@media screen and (min-width:425px) and (max-width:459px) {
-  #reviews-list li{
-    width:85px;
-    height:180px;
-    overflow-x: hidden; 
-  }
-  #reviews-list li p{
-    overflow-x: scroll;
-  }
-  #reviews-list li p:last-child{
-    display: none;
-  }
-  #restaurant-container td:nth-child(even){
-    overflow-x: scroll;
-    width:85px;
-  }
-}
-@media screen and (min-width:460px) and (max-width:499px) {
-  #reviews-list li{
-   width:120px;
-    height:200px; 
-  }
-  #restaurant-container td:nth-child(even){
-    overflow-x: scroll;
-    width:100px;
-  }
-}
-@media screen and (min-width:500px) and (max-width:579px) {
-  #reviews-list li{
-    width:160px;
-  }
-}
-@media screen and (min-width:580px) and (max-width:620px) {
-  #reviews-list li{
-    width:180px;
-  }
-}
-@media screen and (min-width:621px) and (max-width:700px) {
-  #reviews-list li{
-    width:200px;
-  }
-}
-@media screen and (min-width:701px) and (max-width:750px) {
-  #reviews-list li{
-    width:230px;
-  }
-}@media screen and (min-width:751px) and (max-width:850px) {
-  #reviews-list li{
-    width:280px;
-  }
-}
-@media screen and (min-width:851px) and (max-width:950px) {
-  #reviews-list li{
-    width:300px;
-  }
-}
-@media screen and (min-width:951px) and (max-width:1200px) {
-  #reviews-list li{
-    width:360px;
-  }
-}
-
-@media screen and (max-width:600px){
-  .filter-options #neighborhoods-select, .filter-options #cuisines-select{
-    max-width: 40%;
-    display: inline-flex;
-  }
-  .filter-options {
-    display: block;
-    height: 80px;
-  }
-  .filter-options h2{
-    font-size: 15px;
-  }
- 
-}
-
-@media screen and (max-width: 959px) {
-  #restaurants-list {
-    flex-direction: column;
-  }
-}
-
-@media screen and (min-width: 960px) {
-  #restaurants-list {
-    flex-direction: row;
-  }
-}
